@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>Konfirmasi Pesanan - Fixora</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
 <style>
@@ -44,10 +44,10 @@
     background-color: #d9c6ad;
     border: none;
     border-radius: 24px;
-    padding: 14px 0;
+    padding: 16px 0;
     width: 100%;
     font-weight: 900;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     color: #000;
     transition: background-color 0.3s ease;
@@ -80,7 +80,6 @@
         <li><strong>Kode</strong> : <span id="kodepos"></span></li>
         <li><strong>Jasa</strong> : <span id="jasa"></span></li>
         <li><strong>Pilihan Fixer</strong> : <span id="fixer"></span></li>
-        <li><strong>Harga</strong> : <span id="harga"></span></li>
         <li><strong>Pembayaran Via</strong> : <span id="paymentMethod"></span></li>
       </ol>
     </div>
@@ -89,7 +88,9 @@
   <script>
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param) || '';
+      const value = urlParams.get(param) || '';
+      console.log(`Param ${param}:`, value);
+      return value;
     }
 
     document.getElementById('nama').textContent = getQueryParam('nama');
@@ -100,9 +101,8 @@
     document.getElementById('kecamatan').textContent = getQueryParam('kecamatan');
     document.getElementById('provinsi').textContent = getQueryParam('provinsi');
     document.getElementById('kodepos').textContent = getQueryParam('kodepos');
-    document.getElementById('jasa').textContent = getQueryParam('jasa');
+    document.getElementById('jasa').textContent = getQueryParam('service');
     document.getElementById('fixer').textContent = getQueryParam('fixer');
-    document.getElementById('harga').textContent = getQueryParam('price') ? 'Rp ' + Number(getQueryParam('price')).toLocaleString('id-ID') : '';
     document.getElementById('paymentMethod').textContent = getQueryParam('paymentMethod');
   </script>
 </body>
