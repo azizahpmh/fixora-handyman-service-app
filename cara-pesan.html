@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cara Pesan - Fixora</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+  .header {
+    background-color: #d9c6ad;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  .header a {
+    color: #000;
+    text-decoration: none;
+    padding-bottom: 4px;
+  }
+  .header a.active {
+    border-bottom: 3px solid #6b4a2a;
+    font-weight: 700;
+  }
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  h1 {
+    font-weight: 900;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 40px;
+  }
+  .step {
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    padding: 24px;
+  }
+  .step h2 {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .step p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+<header style="background-color:#d9c6a0; padding: 20px 40px;">
+  <div style="max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 16px;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; font-weight: 700; cursor: pointer;">
+      <img src="logofixorabg.png" alt="Fixora Logo" width="40" height="40" />
+      <span style="font-size: 14px; color: #6b4a2a;">FIXORA</span>
+    </div>
+    <nav style="display: flex; align-items: center; gap: 40px; font-weight: 600; font-size: 16px; color: #6b4a2a;">
+      <a href="fixora-pixel-perfect.html" style="color: #6b4a2a; text-decoration: none;">Beranda</a>
+      <a href="cari-tukang.html" style="color: #6b4a2a; text-decoration: none;">Cari Tukang</a>
+      <a href="cara-pesan.html" style="color: #6b4a2a; text-decoration: none; border-bottom: 3px solid #6b4a2a; padding-bottom: 4px;">Cara Pesan</a>
+      <div class="akun-saya-container" style="position: relative;">
+        <button id="akunSayaBtn" aria-expanded="false" aria-haspopup="true" style="background: none; border: none; font-weight: 600; color: #6b4a2a; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 16px;">
+          Akun Saya
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M1 1L5 5L9 1" stroke="#6b4a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div id="akunSayaMenu" class="akun-saya-menu" style="display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #6b4a2a; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-width: 220px; z-index: 1000;">
+          <a href="profil-saya.html" style="display: block; padding: 8px 16px; color: #6b4a2a; text-decoration: none; font-weight: 600; border-bottom: 1px solid #6b4a2a;">Profil Saya</a>
+          <a href="pendaftaran-jasa-tukang.html" style="display: block; padding: 8px 16px; color: #6b4a2a; text-decoration: none; font-weight: 600;">Pendaftaran Jasa Tukang</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Cara Pesan</h1>
+  <div class="steps">
+    <div class="step">
+      <h2>1. Pilih Tukang</h2>
+      <p>Pilih tukang yang sesuai dengan kebutuhan Anda dari daftar tukang terpercaya kami.</p>
+    </div>
+    <div class="step">
+      <h2>2. Buat Pesanan</h2>
+      <p>Isi formulir pemesanan dengan detail pekerjaan yang ingin dilakukan.</p>
+    </div>
+    <div class="step">
+      <h2>3. Konfirmasi Pesanan</h2>
+      <p>Periksa kembali detail pesanan dan konfirmasi pemesanan Anda.</p>
+    </div>
+    <div class="step">
+      <h2>4. Pembayaran</h2>
+      <p>Lakukan pembayaran melalui metode yang tersedia.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+  const akunSayaBtn = document.getElementById('akunSayaBtn');
+  const akunSayaMenu = document.getElementById('akunSayaMenu');
+
+  akunSayaBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = akunSayaBtn.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      akunSayaMenu.style.display = 'none';
+      akunSayaBtn.setAttribute('aria-expanded', 'false');
+    } else {
+      akunSayaMenu.style.display = 'block';
+      akunSayaBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Close the menu when clicking outside
+  document.addEventListener('click', () => {
+    akunSayaMenu.style.display = 'none';
+    akunSayaBtn.setAttribute('aria-expanded', 'false');
+  });
+</script>
+</body>
+</html>
+</create_file>
