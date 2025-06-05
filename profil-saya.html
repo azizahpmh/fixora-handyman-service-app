@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Profil Saya - Fixora</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+  .header {
+    background-color: #d9c6ad;
+    padding: 20px 40px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .header .logo img {
+    width: 40px;
+    height: 40px;
+  }
+  .header nav a {
+    margin-left: 30px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .header nav a.active {
+    border-bottom: 3px solid #6b4a2a;
+    font-weight: 700;
+  }
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  h1 {
+    font-weight: 900;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  .profile {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  .profile-info {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .profile-info p {
+    margin: 6px 0;
+  }
+  .profile-info strong {
+    display: inline-block;
+    width: 80px;
+  }
+  .order-history {
+    background-color: #d9c6ad;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .order-history h2 {
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .order-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .order-item .star {
+    color: #6b4a2a;
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+<header style="background-color:#d9c6a0; padding: 20px 40px;">
+  <div style="max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 16px;">
+    <div class="logo" style="display: flex; flex-direction: column; align-items: center; gap: 4px; font-weight: 700; cursor: pointer;">
+      <img src="logofixorabg.png" alt="Fixora Logo" width="40" height="40" />
+      <span style="font-size: 14px; color: #6b4a2a;">FIXORA</span>
+    </div>
+    <nav style="display: flex; align-items: center; gap: 40px; font-weight: 600; font-size: 16px; color: #6b4a2a;">
+      <a href="fixora-pixel-perfect.html" style="color: #6b4a2a; text-decoration: none;">Beranda</a>
+      <a href="cari-tukang.html" style="color: #6b4a2a; text-decoration: none;">Cari Tukang</a>
+      <a href="cara-pesan.html" style="color: #6b4a2a; text-decoration: none;">Cara Pesan</a>
+      <div class="akun-saya-container" style="position: relative;">
+        <button id="akunSayaBtn" aria-expanded="false" aria-haspopup="true" style="background: none; border: none; font-weight: 600; color: #6b4a2a; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 16px;">
+          Akun Saya
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M1 1L5 5L9 1" stroke="#6b4a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div id="akunSayaMenu" class="akun-saya-menu" style="display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #6b4a2a; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-width: 220px; z-index: 1000;">
+          <a href="profil-saya.html" style="display: block; padding: 8px 16px; color: #6b4a2a; text-decoration: none; font-weight: 600; border-bottom: 1px solid #6b4a2a;">Profil Saya</a>
+          <a href="pendaftaran-jasa-tukang.html" style="display: block; padding: 8px 16px; color: #6b4a2a; text-decoration: none; font-weight: 600;">Pendaftaran Jasa Tukang</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <h1>PROFIL SAYA</h1>
+  <div class="profile">
+    <img src="https://cdn-icons-png.flaticon.com/512/194/194938.png" alt="Avatar" />
+    <div class="profile-info">
+      <p><strong>Nama</strong>: zaramelanie</p>
+      <p><strong>Email</strong>: zaraM12@gmail.com</p>
+      <p><strong>No. hp</strong>: 08567891234</p>
+      <p><strong>Alamat</strong>: Jl. Raya Cibiru No. 45<br />
+        RT 03 / RW 07<br />
+        Kel. Cipadung, Kec. Cibiru<br />
+        Kota Bandung<br />
+        Jawa Barat<br />
+        40614
+      </p>
+    </div>
+  </div>
+  <section class="order-history">
+    <h2>Riwayat Pesanan</h2>
+    <div class="order-item">
+      <span class="star">★</span> Fix Listrik
+    </div>
+    <div class="order-item">
+      <span class="star">★</span> Fix Air
+    </div>
+  </section>
+</main>
+<script>
+  const akunSayaBtn = document.getElementById('akunSayaBtn');
+  const akunSayaMenu = document.getElementById('akunSayaMenu');
+
+  akunSayaBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = akunSayaBtn.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      akunSayaMenu.style.display = 'none';
+      akunSayaBtn.setAttribute('aria-expanded', 'false');
+    } else {
+      akunSayaMenu.style.display = 'block';
+      akunSayaBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Close the menu when clicking outside
+  document.addEventListener('click', () => {
+    akunSayaMenu.style.display = 'none';
+    akunSayaBtn.setAttribute('aria-expanded', 'false');
+  });
+</script>
+</body>
+</html>
+</create_file>
