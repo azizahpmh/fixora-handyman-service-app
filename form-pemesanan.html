@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Form Pemesanan - Fixora</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+  .container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  h1 {
+    font-weight: 900;
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+  label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #6b4a2a;
+    border-radius: 24px;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  input::placeholder {
+    color: #d9c6ad;
+    font-weight: 600;
+  }
+  button {
+    background-color: #d9c6ad;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 0;
+    width: 100%;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #b5946f;
+  }
+</style>
+</head>
+  <body>
+  <header style="background-color:#d9c6ad; padding: 20px;">
+    <div style="max-width: 700px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 14px;">
+      <div style="display: flex; align-items: center; gap: 8px; font-weight: 700;">
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <circle cx="32" cy="32" r="30" stroke="#6b4a2a" stroke-width="4"/>
+          <path d="M20 44L44 20" stroke="#6b4a2a" stroke-width="4" stroke-linecap="round"/>
+          <path d="M44 44L20 20" stroke="#6b4a2a" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="10" stroke="#6b4a2a" stroke-width="4"/>
+        </svg>
+        FIXORA
+      </div>
+      <nav>
+        <a href="fixora-pixel-perfect.html" style="margin-left: 30px; padding-bottom: 4px; color: #000; font-weight: 600;">Beranda</a>
+        <a href="cari-tukang.html" style="margin-left: 30px; padding-bottom: 4px; border-bottom: 3px solid #6b4a2a; color: #000; font-weight: 600;">Cari Tukang</a>
+        <a href="cara-pesan.html" style="margin-left: 30px; padding-bottom: 4px; color: #000; font-weight: 600; cursor: default;">Cara Pesan</a>
+        <a href="profil-saya.html" style="margin-left: 30px; padding-bottom: 4px; color: #000; font-weight: 600;">Akun Saya ▼</a>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Format Pemesanan</h1>
+    <form action="form-pembayaran.html" method="GET">
+      <label for="nama">Nama Pemesan</label>
+      <input type="text" id="nama" name="nama" placeholder="Nama Pemesan..." required />
+
+      <label for="telepon">No Telepon</label>
+      <input type="tel" id="telepon" name="telepon" placeholder="+62xxxxxxxxxxx" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="...@gmail.com" required />
+
+      <label for="alamat">Alamat</label>
+      <input type="text" id="alamat" name="alamat" placeholder="Alamat..." required />
+
+      <label for="kelurahan">Kelurahan</label>
+      <input type="text" id="kelurahan" name="kelurahan" placeholder="Kelurahan..." required />
+
+      <label for="kecamatan">Kecamatan</label>
+      <input type="text" id="kecamatan" name="kecamatan" placeholder="Kecamatan..." required />
+
+      <label for="provinsi">Provinsi</label>
+      <input type="text" id="provinsi" name="provinsi" placeholder="Provinsi..." required />
+
+      <label for="kodepos">Kode Pos</label>
+      <input type="text" id="kodepos" name="kodepos" placeholder="Kode Pos..." required />
+
+      <button type="submit">PEMBAYARAN</button>
+    </form>
+  </div>
+  </body>
+</html>
