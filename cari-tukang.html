@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cari Tukang - Fixora</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1 {
+    font-weight: 900;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .fixer-card {
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .fixer-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  .fixer-info {
+    flex: 1;
+  }
+  .fixer-name {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 0 4px 0;
+  }
+  .fixer-rating {
+    font-size: 14px;
+    color: #f5b50a;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .fixer-description {
+    font-size: 14px;
+    margin: 4px 0;
+    color: #333;
+  }
+  .fixer-price-distance {
+    font-size: 14px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .distance {
+    color: #e63946;
+  }
+  .btn-order {
+    background-color: #6b4a2a;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+<header style="background-color:#d9c6a0; padding: 20px 40px;">
+  <div style="max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 16px;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; font-weight: 700; cursor: pointer;">
+      <img src="logofixorabg.png" alt="Fixora Logo" width="40" height="40" />
+      <span style="font-size: 14px; color: #6b4a2a;">FIXORA</span>
+    </div>
+    <nav style="display: flex; align-items: center; gap: 40px; font-weight: 600; font-size: 16px; color: #6b4a2a;">
+      <a href="fixora-pixel-perfect.html" style="color: #6b4a2a; text-decoration: none;">Beranda</a>
+      <a href="cari-tukang.html" style="color: #6b4a2a; text-decoration: none; border-bottom: 3px solid #6b4a2a; padding-bottom: 4px;">Cari Tukang</a>
+      <a href="cara-pesan.html" style="color: #6b4a2a; text-decoration: none; cursor: default; padding-bottom: 4px;">Cara Pesan</a>
+      <div class="akun-saya-container" style="position: relative;">
+        <button id="akunSayaBtn" aria-expanded="false" aria-haspopup="true" style="background: none; border: none; font-weight: 600; color: #6b4a2a; cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 16px;">
+          Akun Saya
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M1 1L5 5L9 1" stroke="#6b4a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div id="akunSayaMenu" class="akun-saya-menu" style="display: none; position: absolute; top: 100%; right: 0; background: white; border: 1px solid #6b4a2a; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-width: 220px; z-index: 1000;">
+          <a href="profil-saya.html" style="display: block; padding: 8px 16px; color: #6b4a2a; text-decoration: none; font-weight: 600; border-bottom: 1px solid #6b4a2a;">Profil Saya</a>
+          <a href="pendaftaran-jasa-tukang.html" style="display: block; padding: 8px 16px; color: #6b4a2a; text-decoration: none; font-weight: 600;">Pendaftaran Jasa Tukang</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container" style="max-width: 700px; margin: 20px auto 0 auto; padding: 0 20px;">
+  <h1>Beberapa Pilihan Fixer</h1>
+
+  <h2>Atap/Plafon</h2>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Toni Kurniawan" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Toni Kurniawan</p>
+      <div class="fixer-rating">4.9 ★</div>
+      <p class="fixer-description">Spesialis dalam renovasi dan pemasangan plafon serta atap bocor.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 250.000</span>
+        <span class="distance">- 2.8 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Atap/Plafon', 'Toni Kurniawan', 250000)">Pesan Sekarang</button>
+    </div>
+  </div>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Karyo Setiawan" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Karyo Setiawan</p>
+      <div class="fixer-rating">4.5 ★</div>
+      <p class="fixer-description">Siap membantu perbaikan dan pemasangan plafon dengan hasil maksimal.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 550.000</span>
+        <span class="distance">- 5.3 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Atap/Plafon', 'Karyo Setiawan', 550000)">Pesan Sekarang</button>
+    </div>
+  </div>
+
+  <h2>Listrik</h2>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="Setiawan Akbar" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Setiawan Akbar</p>
+      <div class="fixer-rating">4.2 ★</div>
+      <p class="fixer-description">Ahli kelistrikan berpengalaman, siap menangani instalasi, perbaikan, dan pengecekan.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 420.000</span>
+        <span class="distance">- 2.0 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Listrik', 'Setiawan Akbar', 420000)">Pesan Sekarang</button>
+    </div>
+  </div>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/60.jpg" alt="Wawan Nugroho" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Wawan Nugroho</p>
+      <div class="fixer-rating">5.0 ★</div>
+      <p class="fixer-description">Spesialis instalasi dan perbaikan listrik rumah tangga dengan layanan cepat dan rapi.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 350.000</span>
+        <span class="distance">- 3.2 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Listrik', 'Wawan Nugroho', 350000)">Pesan Sekarang</button>
+    </div>
+  </div>
+
+  <h2>Cat</h2>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Yanto Gunawan" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Yanto Gunawan</p>
+      <div class="fixer-rating">3.8 ★</div>
+      <p class="fixer-description">Mengutamakan kualitas dan kerapian dalam setiap pekerjaan cat.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 285.000</span>
+        <span class="distance">- 4.2 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Cat', 'Yanto Gunawan', 285000)">Pesan Sekarang</button>
+    </div>
+  </div>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/80.jpg" alt="Dayat Rahman" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Dayat Rahman</p>
+      <div class="fixer-rating">5.0 ★</div>
+      <p class="fixer-description">Spesialis cat tembok, plafon, dan furniture dengan sentuhan profesional.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 255.000</span>
+        <span class="distance">- 1.9 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Cat', 'Dayat Rahman', 255000)">Pesan Sekarang</button>
+    </div>
+  </div>
+
+  <h2>Las</h2>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/90.jpg" alt="Usman Bahri" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Usman Bahri</p>
+      <div class="fixer-rating">4.6 ★</div>
+      <p class="fixer-description">Ahli las besi hollow, stainless, dan berbagai jenis logam lainnya.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 325.000</span>
+        <span class="distance">- 3.2 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Las', 'Usman Bahri', 325000)">Pesan Sekarang</button>
+    </div>
+  </div>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/100.jpg" alt="Herman Saputra" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Herman Saputra</p>
+      <div class="fixer-rating">4.7 ★</div>
+      <p class="fixer-description">Jasa las cepat dan rapi untuk rumah dan bangunan sesuai kebutuhan anda.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 295.000</span>
+        <span class="distance">- 6.9 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Las', 'Herman Saputra', 295000)">Pesan Sekarang</button>
+    </div>
+  </div>
+
+  <h2>Mesin</h2>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/110.jpg" alt="Ujang Suryana" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Ujang Suryana</p>
+      <div class="fixer-rating">4.0 ★</div>
+      <p class="fixer-description">Spesialis sambung dan bentuk logam untuk pagar, kanopi, dan konstruksi.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 495.000</span>
+        <span class="distance">- 4.3 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Mesin', 'Ujang Suryana', 495000)">Pesan Sekarang</button>
+    </div>
+  </div>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/120.jpg" alt="Agus Subekti" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Agus Subekti</p>
+      <div class="fixer-rating">4.5 ★</div>
+      <p class="fixer-description">Ahli mesin berpengalaman, siap melayani langsung ke rumah Anda.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 425.000</span>
+        <span class="distance">- 2.1 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Mesin', 'Agus Subekti', 425000)">Pesan Sekarang</button>
+    </div>
+  </div>
+
+  <h2>Air</h2>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/130.jpg" alt="Saiful Ramdhan" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Saiful Ramdhan</p>
+      <div class="fixer-rating">5.0 ★</div>
+      <p class="fixer-description">Ahli instalasi dan perbaikan saluran air dengan pelayanan cepat dan rapi.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 365.000</span>
+        <span class="distance">- 4.2 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Air', 'Saiful Ramdhan', 365000)">Pesan Sekarang</button>
+    </div>
+  </div>
+  <div class="fixer-card">
+    <img src="https://randomuser.me/api/portraits/men/140.jpg" alt="Slamet Riyadi" class="fixer-image" />
+    <div class="fixer-info">
+      <p class="fixer-name">Slamet Riyadi</p>
+      <div class="fixer-rating">4.9 ★</div>
+      <p class="fixer-description">Spesialis saluran mampet, bocor, dan instalasi air bersih & kotor.</p>
+      <div class="fixer-price-distance">
+        <span>Rp 400.000</span>
+        <span class="distance">- 3.0 km</span>
+      </div>
+      <button class="btn-order" onclick="orderFixer('Air', 'Slamet Riyadi', 400000)">Pesan Sekarang</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function orderFixer(service, fixer, price) {
+    const url = new URL(window.location.origin + './form-pembayaran.html');
+    url.searchParams.set('service', service);
+    url.searchParams.set('fixer', fixer);
+    url.searchParams.set('price', price);
+    window.location.href = url.toString();
+  }
+
+  const akunSayaBtn = document.getElementById('akunSayaBtn');
+  const akunSayaMenu = document.getElementById('akunSayaMenu');
+
+  akunSayaBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = akunSayaBtn.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      akunSayaMenu.style.display = 'none';
+      akunSayaBtn.setAttribute('aria-expanded', 'false');
+    } else {
+      akunSayaMenu.style.display = 'block';
+      akunSayaBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Close the menu when clicking outside
+  document.addEventListener('click', () => {
+    akunSayaMenu.style.display = 'none';
+    akunSayaBtn.setAttribute('aria-expanded', 'false');
+  });
+</script>
+</body>
+</html>
