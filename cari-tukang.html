@@ -286,7 +286,7 @@
 
 <script>
   function orderFixer(service, fixer, price) {
-    const url = new URL(window.location.origin + './form-pemesanan.html');
+    const url = new URL('./form-pemesanan.html', window.location.href);
     url.searchParams.set('service', service);
     url.searchParams.set('fixer', fixer);
     url.searchParams.set('price', price);
