@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Form Pembayaran - Fixora</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    color: #000;
+  }
+  .container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  h1 {
+    font-weight: 900;
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+  label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #6b4a2a;
+    border-radius: 24px;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  .flex-row {
+    display: flex;
+    gap: 20px;
+  }
+  .flex-item {
+    flex: 1;
+  }
+  .payment-methods {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .payment-method {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+  }
+  .payment-method label {
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .payment-method input[type="radio"] {
+    accent-color: #6b4a2a;
+    cursor: pointer;
+  }
+  .summary {
+    margin-top: 20px;
+    font-weight: 700;
+  }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .summary-row.total {
+    font-weight: 900;
+    font-size: 18px;
+  }
+  button {
+    background-color: #d9c6ad;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 0;
+    width: 100%;
+    font-weight: 900;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  button:hover {
+    background-color: #b5946f;
+  }
+</style>
+</head>
+<body>
+  <header style="background-color:#d9c6ad; padding: 20px;">
+    <div style="max-width: 700px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 14px;">
+      <div style="display: flex; align-items: center; gap: 8px; font-weight: 700;">
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <circle cx="32" cy="32" r="30" stroke="#6b4a2a" stroke-width="4"/>
+          <path d="M20 44L44 20" stroke="#6b4a2a" stroke-width="4" stroke-linecap="round"/>
+          <path d="M44 44L20 20" stroke="#6b4a2a" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="10" stroke="#6b4a2a" stroke-width="4"/>
+        </svg>
+        FIXORA
+      </div>
+      <nav>
+        <a href="fixora-pixel-perfect.html" style="margin-left: 30px; padding-bottom: 4px; color: #000; font-weight: 600;">Beranda</a>
+        <a href="cari-tukang.html" style="margin-left: 30px; padding-bottom: 4px; border-bottom: 3px solid #6b4a2a; color: #000; font-weight: 600;">Cari Tukang</a>
+        <a href="cara-pesan.html" style="margin-left: 30px; padding-bottom: 4px; color: #000; font-weight: 600; cursor: default;">Cara Pesan</a>
+        <a href="profil-saya.html" style="margin-left: 30px; padding-bottom: 4px; color: #000; font-weight: 600;">Akun Saya ▼</a>
+      </nav>
+    </div>
+  </header>
+<div class="container">
+  <h1>Format Pembayaran</h1>
+  <form id="paymentForm" action="#" method="GET">
+    <div class="flex-row">
+      <div class="flex-item">
+        <label for="jasa">Jasa</label>
+        <input type="text" id="jasa" name="jasa" placeholder="Fix..." required readonly />
+      </div>
+      <div class="flex-item">
+        <label for="fixer">Fixer</label>
+        <input type="text" id="fixer" name="fixer" placeholder="Fixer..." required readonly />
+      </div>
+    </div>
+
+    <!-- Hidden inputs for pemesanan data -->
+    <input type="hidden" id="nama" name="nama" />
+    <input type="hidden" id="telepon" name="telepon" />
+    <input type="hidden" id="email" name="email" />
+    <input type="hidden" id="alamat" name="alamat" />
+    <input type="hidden" id="kelurahan" name="kelurahan" />
+    <input type="hidden" id="kecamatan" name="kecamatan" />
+    <input type="hidden" id="provinsi" name="provinsi" />
+    <input type="hidden" id="kodepos" name="kodepos" />
+
+    <h2>Metode Pembayaran</h2>
+    <div class="payment-methods">
+      <div class="payment-method">
+        <label for="ovo">OVO</label>
+        <input type="radio" id="ovo" name="paymentMethod" value="OVO" checked />
+      </div>
+      <div class="payment-method">
+        <label for="gopay">Gopay</label>
+        <input type="radio" id="gopay" name="paymentMethod" value="Gopay" />
+      </div>
+      <div class="payment-method">
+        <label for="dana">Dana</label>
+        <input type="radio" id="dana" name="paymentMethod" value="Dana" />
+      </div>
+    </div>
+    <button type="button" id="showDetailsBtn">Rincian Pembayaran</button>
+    <div class="summary" id="paymentSummary" style="display:none;">
+      <div class="summary-row">
+        <span>Subtotal Pesanan</span>
+        <span id="subtotal">Rp 0</span>
+      </div>
+      <div class="summary-row">
+        <span>Biaya Kebutuhan</span>
+        <span id="biayaKebutuhan">Rp 150,000</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total Pembayaran</span>
+        <span id="totalPembayaran">Rp 0</span>
+      </div>
+    </div>
+    <button type="submit" id="payNowBtn" style="display:none;">Bayar Sekarang</button>
+  </form>
+</div>
+<script>
+  const showDetailsBtn = document.getElementById('showDetailsBtn');
+  const paymentSummary = document.getElementById('paymentSummary');
+  const payNowBtn = document.getElementById('payNowBtn');
+
+  showDetailsBtn.addEventListener('click', () => {
+    paymentSummary.style.display = 'block';
+    showDetailsBtn.style.display = 'none';
+    payNowBtn.style.display = 'block';
+  });
+
+  // Populate hidden inputs with pemesanan data from URL params
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param) || '';
+  }
+
+  document.getElementById('nama').value = getQueryParam('nama');
+  document.getElementById('telepon').value = getQueryParam('telepon');
+  document.getElementById('email').value = getQueryParam('email');
+  document.getElementById('alamat').value = getQueryParam('alamat');
+  document.getElementById('kelurahan').value = getQueryParam('kelurahan');
+  document.getElementById('kecamatan').value = getQueryParam('kecamatan');
+  document.getElementById('provinsi').value = getQueryParam('provinsi');
+  document.getElementById('kodepos').value = getQueryParam('kodepos');
+
+  // Populate jasa, fixer, and price inputs
+  document.getElementById('jasa').value = getQueryParam('service');
+  document.getElementById('fixer').value = getQueryParam('fixer');
+  const price = getQueryParam('price');
+  const priceFormatted = price ? 'Rp ' + Number(price).toLocaleString('id-ID') : 'Rp 0';
+  document.getElementById('subtotal').textContent = priceFormatted;
+  const biayaKebutuhan = 150000;
+  document.getElementById('biayaKebutuhan').textContent = 'Rp ' + biayaKebutuhan.toLocaleString('id-ID');
+  const total = price ? Number(price) + biayaKebutuhan : biayaKebutuhan;
+  document.getElementById('totalPembayaran').textContent = 'Rp ' + total.toLocaleString('id-ID');
+
+  // On form submit, redirect to a confirmation page with form data in query params
+  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const params = new URLSearchParams(new FormData(this)).toString();
+    window.location.href = 'form-konfirmasi.html?' + params;
+  });
+</script>
+</body>
+</html>
