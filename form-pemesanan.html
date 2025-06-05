@@ -107,8 +107,36 @@
       <label for="kodepos">Kode Pos</label>
       <input type="text" id="kodepos" name="kodepos" placeholder="Kode Pos..." required />
 
+      <div>
+        <p><strong>Jasa:</strong> <span id="serviceDisplay"></span></p>
+        <p><strong>Fixer:</strong> <span id="fixerDisplay"></span></p>
+        <p><strong>Harga:</strong> <span id="priceDisplay"></span></p>
+      </div>
+
+      <input type="hidden" id="service" name="service" />
+      <input type="hidden" id="fixer" name="fixer" />
+      <input type="hidden" id="price" name="price" />
+
       <button type="submit">PEMBAYARAN</button>
     </form>
   </div>
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param) || '';
+    }
+
+    const service = getQueryParam('service');
+    const fixer = getQueryParam('fixer');
+    const price = getQueryParam('price');
+
+    document.getElementById('serviceDisplay').textContent = service;
+    document.getElementById('fixerDisplay').textContent = fixer;
+    document.getElementById('priceDisplay').textContent = price ? 'Rp ' + Number(price).toLocaleString('id-ID') : '';
+
+    document.getElementById('service').value = service;
+    document.getElementById('fixer').value = fixer;
+    document.getElementById('price').value = price;
+  </script>
   </body>
 </html>
