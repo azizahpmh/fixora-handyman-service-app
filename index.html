@@ -1,530 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Fixora - Pixel Perfect</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
-<style>
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: #fff;
-    color: #000;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  /* Header */
-  header {
-    background-color: #d9c6a0;
-    padding: 20px 40px;
-  }
-  .header-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    font-size: 16px;
-  }
-  .logo-text {
-    font-size: 14px;
-    color: #6b4a2a;
-  }
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    font-weight: 600;
-    font-size: 16px;
-    color: #6b4a2a;
-  }
-  nav a {
-    color: #6b4a2a;
-    text-decoration: none;
-  }
-  nav a.active, nav a:hover {
-    border-bottom: 3px solid #6b4a2a;
-    padding-bottom: 4px;
-  }
-  .akun-saya-container {
-    position: relative;
-  }
-  #akunSayaBtn {
-    background: none;
-    border: none;
-    font-weight: 600;
-    color: #6b4a2a;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 16px;
-  }
-  #akunSayaMenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: white;
-    border: 1px solid #6b4a2a;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    min-width: 220px;
-    z-index: 1000;
-  }
-  #akunSayaMenu a {
-    display: block;
-    padding: 8px 16px;
-    color: #6b4a2a;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  #akunSayaMenu a:not(:last-child) {
-    border-bottom: 1px solid #6b4a2a;
-  }
-  /* Hero */
-  .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 60px 0;
-    background-color: #fff;
-  }
-  .hero-text {
-    font-weight: 900;
-    font-size: 36px;
-    line-height: 1.1;
-    max-width: 350px;
-  }
-  .hero-text .highlight {
-    background-color: #6b4a2a;
-    color: white;
-    border-radius: 12px;
-    padding: 0 8px;
-  }
-  .hero-image {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    overflow: visible;
-  }
-  .hero-image img {
-    width: 300px;
-    height: 300px;
-    object-fit: contain;
-    border-radius: 50%;
-  }
-  /* Why FIXORA */
-  .why-section {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 40px;
-    background-color: #fff;
-    border-radius: 40px 0 0 40px;
-  }
-  .why-image {
-    flex-shrink: 0;
-    width: 300px;
-    height: 300px;
-    border-radius: 40px 0 0 40px;
-    overflow: hidden;
-  }
-  .why-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .why-text {
-    max-width: 400px;
-  }
-  .why-text h2 {
-    font-weight: 900;
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-  .underline {
-    width: 80px;
-    height: 4px;
-    background-color: #d9c6ad;
-    border-bottom: 3px solid #6b4a2a;
-    margin-bottom: 16px;
-  }
-  .why-text p {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #000;
-  }
-  /* Stats */
-  .stats {
-    background-color: #d9c6ad;
-    border-radius: 0 0 20px 20px;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: space-around;
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 40px;
-  }
-  .stat-item {
-    text-align: center;
-  }
-  .stat-number {
-    font-size: 32px;
-    font-weight: 900;
-  }
-  /* Services */
-  .services {
-    margin-bottom: 40px;
-  }
-  .services h3 {
-    font-weight: 900;
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  .service-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px 40px;
-  }
-  .service-item {
-    background-color: #e4d7c1;
-    border-radius: 12px;
-    padding: 16px 24px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-  }
-  .service-item .star {
-    color: #6b4a2a;
-    font-size: 20px;
-  }
-  /* Testimonials */
-  .testimonials {
-    margin-bottom: 40px;
-  }
-  .testimonials h3 {
-    font-weight: 900;
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  .testimonial-list {
-    display: flex;
-    gap: 20px;
-  }
-  .testimonial-item {
-    background-color: #e4d7c1;
-    border-radius: 12px;
-    padding: 20px;
-    width: 220px;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .testimonial-header {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-  .avatar {
-    width: 40px;
-    height: 40px;
-    background-color: #ccc;
-    border-radius: 50%;
-  }
-  .testimonial-name {
-    font-weight: 700;
-  }
-  .testimonial-rating {
-    font-size: 12px;
-  }
-  .testimonial-service {
-    font-size: 12px;
-    font-style: italic;
-  }
-  /* Partnership */
-  .partnership {
-    margin-bottom: 40px;
-  }
-  .partnership h3 {
-    font-weight: 900;
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  .partner-group {
-    background-color: #e4d7c1;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 24px;
-  }
-  .partner-group h4 {
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-  .partner-logos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-  }
-  .partner-logos img {
-    max-height: 40px;
-    object-fit: contain;
-  }
-  /* Footer */
-  
-  footer {
-    background-color: #8f5e2d;
-    color: black;
-    padding: 40px 20px;
-    font-size: 14px;
-  }
-  footer .footer-container {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  footer .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-  }
-  footer .footer-logo svg {
-    width: 40px;
-    height: 40px;
-  }
-  footer .footer-info {
-    max-width: 300px;
-    line-height: 1.4;
-  }
-  footer .footer-contact {
-    max-width: 200px;
-  }
-  footer .social-links {
-    margin-top: 12px;
-    display: flex;
-    gap: 16px;
-  }
-  footer .social-links a {
-    font-weight: 700;
-    color: black;
-    text-decoration: none;
-  }
-</style>
-</head>
-<body>
-<header style="background-color:#d9c6a0; padding: 20px 40px;">
-  <div style="max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 16px;">
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; font-weight: 700; cursor: pointer;">
-      <img src="logofixorabg.png" alt="Fixora Logo" width="80" height="80" />
-    </div>
-    <nav>
-      <a href="index.html" class="active">Beranda</a>
-      <a href="cari-tukang.html">Cari Tukang</a>
-      <a href="cara-pesan.html">Cara Pesan</a>
-      <div class="akun-saya-container">
-        <button id="akunSayaBtn" aria-expanded="false" aria-haspopup="true">
-          Akun Saya
-          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M1 1L5 5L9 1" stroke="#6b4a2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div id="akunSayaMenu" class="akun-saya-menu">
-          <a href="profil-saya.html">Profil Saya</a>
-          <a href="pendaftaran-jasa-tukang.html">Pendaftaran Jasa Tukang</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fixora - Pixel Perfect</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background-color: #fff;
+        color: #000;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      /* Header */
+      header {
+        background-color: #d9c6a0;
+        padding: 20px 40px;
+      }
+      .header-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .logo-text {
+        font-size: 14px;
+        color: #6b4a2a;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        font-weight: 600;
+        font-size: 16px;
+        color: #6b4a2a;
+      }
+      nav a {
+        color: #6b4a2a;
+        text-decoration: none;
+      }
+      nav a.active,
+      nav a:hover {
+        border-bottom: 3px solid #6b4a2a;
+        padding-bottom: 4px;
+      }
+      .akun-saya-container {
+        position: relative;
+      }
+      #akunSayaBtn {
+        background: none;
+        border: none;
+        font-weight: 600;
+        color: #6b4a2a;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 16px;
+      }
+      #akunSayaMenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border: 1px solid #6b4a2a;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        min-width: 220px;
+        z-index: 1000;
+      }
+      #akunSayaMenu a {
+        display: block;
+        padding: 8px 16px;
+        color: #6b4a2a;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      #akunSayaMenu a:not(:last-child) {
+        border-bottom: 1px solid #6b4a2a;
+      }
+      /* Hero */
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px 0;
+        background-color: #fff;
+      }
+      .hero-text {
+        font-weight: 900;
+        font-size: 36px;
+        line-height: 1.1;
+        max-width: 350px;
+      }
+      .hero-text .highlight {
+        background-color: #6b4a2a;
+        color: white;
+        border-radius: 12px;
+        padding: 0 8px;
+      }
+      .hero-image {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        overflow: visible;
+      }
+      .hero-image img {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+      /* Why FIXORA */
+      .why-section {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 40px;
+        background-color: #fff;
+        border-radius: 40px 0 0 40px;
+      }
+      .why-image {
+        flex-shrink: 0;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px 0 0 40px;
+        overflow: hidden;
+      }
+      .why-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .why-text {
+        max-width: 400px;
+      }
+      .why-text h2 {
+        font-weight: 900;
+        font-size: 28px;
+        margin-bottom: 8px;
+      }
+      .underline {
+        width: 80px;
+        height: 4px;
+        background-color: #d9c6ad;
+        border-bottom: 3px solid #6b4a2a;
+        margin-bottom: 16px;
+      }
+      .why-text p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #000;
+      }
+      /* Stats */
+      .stats {
+        background-color: #d9c6ad;
+        border-radius: 0 0 20px 20px;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: space-around;
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .stat-number {
+        font-size: 32px;
+        font-weight: 900;
+      }
+      /* Services */
+      .services {
+        margin-bottom: 40px;
+      }
+      .services h3 {
+        font-weight: 900;
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+      .service-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 40px;
+      }
+      .service-item {
+        background-color: #e4d7c1;
+        border-radius: 12px;
+        padding: 16px 24px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+      }
+      .service-item .star {
+        color: #6b4a2a;
+        font-size: 20px;
+      }
+      /* Testimonials */
+      .testimonials {
+        margin-bottom: 40px;
+      }
+      .testimonials h3 {
+        font-weight: 900;
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+      .testimonial-list {
+        display: flex;
+        gap: 20px;
+      }
+      .testimonial-item {
+        background-color: #e4d7c1;
+        border-radius: 12px;
+        padding: 20px;
+        width: 220px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .testimonial-header {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+        background-color: #ccc;
+        border-radius: 50%;
+      }
+      .testimonial-name {
+        font-weight: 700;
+      }
+      .testimonial-rating {
+        font-size: 12px;
+      }
+      .testimonial-service {
+        font-size: 12px;
+        font-style: italic;
+      }
+      /* Partnership */
+      .partnership {
+        margin-bottom: 40px;
+      }
+      .partnership h3 {
+        font-weight: 900;
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+      .partner-group {
+        background-color: #e4d7c1;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 24px;
+      }
+      .partner-group h4 {
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+      .partner-logos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+      }
+      .partner-logos img {
+        max-height: 40px;
+        object-fit: contain;
+      }
+      /* Footer */
+
+      footer {
+        background-color: #8f5e2d;
+        color: black;
+        padding: 40px 20px;
+        font-size: 14px;
+      }
+      footer .footer-container {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      footer .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+      }
+      footer .footer-logo svg {
+        width: 40px;
+        height: 40px;
+      }
+      footer .footer-info {
+        max-width: 300px;
+        line-height: 1.4;
+      }
+      footer .footer-contact {
+        max-width: 200px;
+      }
+      footer .social-links {
+        margin-top: 12px;
+        display: flex;
+        gap: 16px;
+      }
+      footer .social-links a {
+        font-weight: 700;
+        color: black;
+        text-decoration: none;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .hero-text {
+          font-weight: 500;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header style="background-color: #d9c6a0; padding: 20px 40px">
+      <div
+        style="
+          max-width: 900px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-weight: 600;
+          font-size: 16px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-weight: 700;
+            cursor: pointer;
+          "
+        >
+          <img
+            src="logofixorabg.png"
+            alt="Fixora Logo"
+            width="80"
+            height="80"
+          />
         </div>
+        <nav>
+          <a href="index.html" class="active">Beranda</a>
+          <a href="cari-tukang.html">Cari Tukang</a>
+          <a href="cara-pesan.html">Cara Pesan</a>
+          <div class="akun-saya-container">
+            <button id="akunSayaBtn" aria-expanded="false" aria-haspopup="true">
+              Akun Saya
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="#6b4a2a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div id="akunSayaMenu" class="akun-saya-menu">
+              <a href="profil-saya.html">Profil Saya</a>
+              <a href="pendaftaran-jasa-tukang.html">Pendaftaran Jasa Tukang</a>
+            </div>
+          </div>
+        </nav>
       </div>
-    </nav>
-  </div>
-</header>
+    </header>
 
-<main class="container">
-  <section class="hero">
-    <div class="hero-text">
-      Your <span class="highlight">Trusted</span><br />
-      Building<br />
-      Solutions
-    </div>
-    <div class="hero-image">
-      <img src="yourtrustedbg.png" alt="Handyman" />
-    </div>
-  </section>
+    <main class="container">
+      <section class="hero">
+        <div class="hero-text">
+          Your <span class="highlight">Trusted</span><br />
+          Building<br />
+          Solutions
+        </div>
+        <div class="hero-image">
+          <img src="yourtrustedbg.png" alt="Handyman" />
+        </div>
+      </section>
 
-  <section class="why-section">
-    <div class="why-image">
-      <img src="whyfixorabg.jpg" alt="Handshake" />
-    </div>
-    <div class="why-text">
-      <h2>Why FIXORA?</h2>
-      <div class="underline"></div>
-      <p>
-        Sejak 2015, FIXORA memudahkan Anda menemukan tukang terpercaya dan terverifikasi untuk perbaikan rumah seperti listrik, AC, dan saluran air. Harga transparan, ulasan nyata, layanan cepat & aman.
-      </p>
-    </div>
-  </section>
+      <section class="why-section">
+        <div class="why-image">
+          <img src="whyfixorabg.jpg" alt="Handshake" />
+        </div>
+        <div class="why-text">
+          <h2>Why FIXORA?</h2>
+          <div class="underline"></div>
+          <p>
+            Sejak 2015, FIXORA memudahkan Anda menemukan tukang terpercaya dan
+            terverifikasi untuk perbaikan rumah seperti listrik, AC, dan saluran
+            air. Harga transparan, ulasan nyata, layanan cepat & aman.
+          </p>
+        </div>
+      </section>
 
-  <section class="stats">
-    <div class="stat-item">
-      <div class="stat-number">456++</div>
-      <div>Pekerjaan Terselesaikan</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">97++</div>
-      <div>Tukang Terverifikasi</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">67++</div>
-      <div>Kolaborator & Distributor</div>
-    </div>
-  </section>
+      <section class="stats">
+        <div class="stat-item">
+          <div class="stat-number">456++</div>
+          <div>Pekerjaan Terselesaikan</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">97++</div>
+          <div>Tukang Terverifikasi</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">67++</div>
+          <div>Kolaborator & Distributor</div>
+        </div>
+      </section>
 
-  <section class="services">
-    <h3>Fixee Cari Apa?</h3>
-    <div class="service-list">
-      <div class="service-item"><span class="star">★</span> Fix Atap/Plafon</div>
-      <div class="service-item"><span class="star">★</span> Fix Listrik</div>
-      <div class="service-item"><span class="star">★</span> Fix Cat</div>
-      <div class="service-item"><span class="star">★</span> Fix Las</div>
-      <div class="service-item"><span class="star">★</span> Fix Mesin</div>
-      <div class="service-item"><span class="star">★</span> Fix Air</div>
-    </div>
-  </section>
+      <section class="services">
+        <h3>Fixee Cari Apa?</h3>
+        <div class="service-list">
+          <div class="service-item">
+            <span class="star">★</span> Fix Atap/Plafon
+          </div>
+          <div class="service-item">
+            <span class="star">★</span> Fix Listrik
+          </div>
+          <div class="service-item"><span class="star">★</span> Fix Cat</div>
+          <div class="service-item"><span class="star">★</span> Fix Las</div>
+          <div class="service-item"><span class="star">★</span> Fix Mesin</div>
+          <div class="service-item"><span class="star">★</span> Fix Air</div>
+        </div>
+      </section>
 
-  <section class="testimonials">
-    <h3>Testimoni</h3>
-    <div class="testimonial-list">
-      <div class="testimonial-item">
-        <div class="testimonial-header">
-          <div class="avatar"></div>
-          <div>
-            <div class="testimonial-name">Cintia Karima</div>
-            <div class="testimonial-rating">★★★★★</div>
-            <div class="testimonial-service">Fix Ac</div>
+      <section class="testimonials">
+        <h3>Testimoni</h3>
+        <div class="testimonial-list">
+          <div class="testimonial-item">
+            <div class="testimonial-header">
+              <div class="avatar"></div>
+              <div>
+                <div class="testimonial-name">Cintia Karima</div>
+                <div class="testimonial-rating">★★★★★</div>
+                <div class="testimonial-service">Fix Ac</div>
+              </div>
+            </div>
+            <div class="testimonial-text">
+              Saya sangat suka dengan pelayananya, para tukang juga ramah
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-header">
+              <div class="avatar"></div>
+              <div>
+                <div class="testimonial-name">Joko Anwar</div>
+                <div class="testimonial-rating">★★★★</div>
+                <div class="testimonial-service">Fix Atap</div>
+              </div>
+            </div>
+            <div class="testimonial-text">
+              Fixer nya melakukan tugas dengan baik dan ramah sekali, fixora
+              memiliki barang yang berkualitas
+            </div>
+          </div>
+          <div class="testimonial-item">
+            <div class="testimonial-header">
+              <div class="avatar"></div>
+              <div>
+                <div class="testimonial-name">Bunga Stella</div>
+                <div class="testimonial-rating">★★★★★</div>
+                <div class="testimonial-service">Fix Cat</div>
+              </div>
+            </div>
+            <div class="testimonial-text">
+              Saya senang dengan hasil catnya bagus sekali, bisa request yang
+              kita ingin dengan dibantu pilihan yang berkualitas
+            </div>
           </div>
         </div>
-        <div class="testimonial-text">
-          Saya sangat suka dengan pelayananya, para tukang juga ramah
-        </div>
-      </div>
-      <div class="testimonial-item">
-        <div class="testimonial-header">
-          <div class="avatar"></div>
-          <div>
-            <div class="testimonial-name">Joko Anwar</div>
-            <div class="testimonial-rating">★★★★</div>
-            <div class="testimonial-service">Fix Atap</div>
+      </section>
+
+      <section class="partnership">
+        <h3>Partnership</h3>
+        <div class="partner-group">
+          <h4>Store Partner</h4>
+          <div class="partner-logos">
+            <img src="propanbg.png" alt="Propan" />
+            <img src="aquaprofbg.png" alt="Aquaproof" />
+            <img src="mowilexbg.png" alt="Mowilex" />
+            <img src="wilsonbg.png" alt="Wilson Cables" />
+            <img src="indogressbg.png" alt="Indogress" />
+            <img src="myecobg.png" alt="MyEco" />
           </div>
         </div>
-        <div class="testimonial-text">
-          Fixer nya melakukan tugas dengan baik dan ramah sekali, fixora memiliki barang yang berkualitas
-        </div>
-      </div>
-      <div class="testimonial-item">
-        <div class="testimonial-header">
-          <div class="avatar"></div>
-          <div>
-            <div class="testimonial-name">Bunga Stella</div>
-            <div class="testimonial-rating">★★★★★</div>
-            <div class="testimonial-service">Fix Cat</div>
+        <div class="partner-group">
+          <h4>Financial Partner</h4>
+          <div class="partner-logos">
+            <img src="ovobg.png" alt="OVO" />
+            <img src="danabg.png" alt="Dana" />
+            <img src="bcabg.png" alt="BCA" />
+            <img src="gopaybg.png" alt="Gopay" />
+            <img src="bsibg.png" alt="BSI" />
           </div>
         </div>
-        <div class="testimonial-text">
-          Saya senang dengan hasil catnya bagus sekali, bisa request yang kita ingin dengan dibantu pilihan yang berkualitas
+      </section>
+    </main>
+
+    <footer style="background-color: #8f5e2d; color: black; padding: 40px 20px">
+      <div
+        style="
+          max-width: 900px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          font-family: 'Inter', sans-serif;
+        "
+      >
+        <div style="display: flex; gap: 20px; align-items: flex-start">
+          <img
+            src="logofixorabg.png"
+            alt="Fixora Logo"
+            width="120"
+            height="120"
+          />
+          <div>
+            <div style="font-weight: 900; font-size: 18px; margin-bottom: 12px">
+              PT Fixora Solusi Nusantara
+            </div>
+            <div style="font-size: 14px; line-height: 1.5">
+              <p style="margin: 0">Jl. Cipaganti No. 119,</p>
+              <p style="margin: 0">Kel. Pasteur, Kec. Sukajadi,</p>
+              <p style="margin: 0">Bandung, Jawa Barat 40161</p>
+              <p style="margin: 0">Indonesia</p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right; font-family: 'Inter', sans-serif">
+          <div style="font-size: 14px; margin-bottom: 12px">
+            SolusiNusantara@fixora.com
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 16px;
+              justify-content: flex-end;
+              font-weight: 700;
+              font-size: 18px;
+            "
+          >
+            <img src="xbg.png" alt="Fixora Logo" width="20" height="20" />
+            <img src="wabg.png.png" alt="Fixora Logo" width="20" height="20" />
+            <img src="igbg.png" alt="Fixora Logo" width="30" height="30" />
+            <img src="linkedbg.png" alt="Fixora Logo" width="30" height="30" />
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <section class="partnership">
-    <h3>Partnership</h3>
-    <div class="partner-group">
-      <h4>Store Partner</h4>
-      <div class="partner-logos">
-        <img src="propanbg.png" alt="Propan" />
-        <img src="aquaprofbg.png" alt="Aquaproof" />
-        <img src="mowilexbg.png" alt="Mowilex" />
-        <img src="wilsonbg.png" alt="Wilson Cables" />
-        <img src="indogressbg.png" alt="Indogress" />
-        <img src="myecobg.png" alt="MyEco" />
-      </div>
-    </div>
-    <div class="partner-group">
-      <h4>Financial Partner</h4>
-      <div class="partner-logos">
-        <img src="ovobg.png" alt="OVO" />
-        <img src="danabg.png" alt="Dana" />
-        <img src="bcabg.png" alt="BCA" />
-        <img src="gopaybg.png" alt="Gopay" />
-        <img src="bsibg.png" alt="BSI" />
-      </div>
-    </div>
-  </section>
-</main>
+    <script>
+      const akunSayaBtn = document.getElementById("akunSayaBtn");
+      const akunSayaMenu = document.getElementById("akunSayaMenu");
 
-<footer style="background-color: #8f5e2d; color: black; padding: 40px 20px;">
-  <div style="max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; font-family: 'Inter', sans-serif;">
-    <div style="display: flex; gap: 20px; align-items: flex-start;">
-      <img src="logofixorabg.png" alt="Fixora Logo" width="120" height="120" />
-      <div>
-        <div style="font-weight: 900; font-size: 18px; margin-bottom: 12px;">PT Fixora Solusi Nusantara</div>
-        <div style="font-size: 14px; line-height: 1.5;">
-          <p style="margin: 0;">Jl. Cipaganti No. 119,</p>
-          <p style="margin: 0;">Kel. Pasteur, Kec. Sukajadi,</p>
-          <p style="margin: 0;">Bandung, Jawa Barat 40161</p>
-          <p style="margin: 0;">Indonesia</p>
-        </div>
-      </div>
-    </div>
-    <div style="text-align: right; font-family: 'Inter', sans-serif;">
-      <div style="font-size: 14px; margin-bottom: 12px;">SolusiNusantara@fixora.com</div>
-      <div style="display: flex; gap: 16px; justify-content: flex-end; font-weight: 700; font-size: 18px;">
-        <img src="xbg.png" alt="Fixora Logo" width="20" height="20"/>
-        <img src="wabg.png.png" alt="Fixora Logo" width="20" height="20"/>
-        <img src="igbg.png" alt="Fixora Logo" width="30" height="30"/>
-        <img src="linkedbg.png" alt="Fixora Logo" width="30" height="30"/>
-      </div>
-    </div>
-  </div>
-</footer>
+      akunSayaBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isExpanded = akunSayaBtn.getAttribute("aria-expanded") === "true";
+        if (isExpanded) {
+          akunSayaMenu.style.display = "none";
+          akunSayaBtn.setAttribute("aria-expanded", "false");
+        } else {
+          akunSayaMenu.style.display = "block";
+          akunSayaBtn.setAttribute("aria-expanded", "true");
+        }
+      });
 
-<script>
-  const akunSayaBtn = document.getElementById('akunSayaBtn');
-  const akunSayaMenu = document.getElementById('akunSayaMenu');
-
-  akunSayaBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isExpanded = akunSayaBtn.getAttribute('aria-expanded') === 'true';
-    if (isExpanded) {
-      akunSayaMenu.style.display = 'none';
-      akunSayaBtn.setAttribute('aria-expanded', 'false');
-    } else {
-      akunSayaMenu.style.display = 'block';
-      akunSayaBtn.setAttribute('aria-expanded', 'true');
-    }
-  });
-
-  // Close the menu when clicking outside
-  document.addEventListener('click', () => {
-    akunSayaMenu.style.display = 'none';
-    akunSayaBtn.setAttribute('aria-expanded', 'false');
-  });
-</script>
-</body>
+      // Close the menu when clicking outside
+      document.addEventListener("click", () => {
+        akunSayaMenu.style.display = "none";
+        akunSayaBtn.setAttribute("aria-expanded", "false");
+      });
+    </script>
+  </body>
 </html>
